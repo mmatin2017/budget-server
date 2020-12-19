@@ -154,6 +154,6 @@ app.delete("/deleteBudget", (req, res) => {
 
 
 
-app.listen(port,"64.225.57.235",() => {
-  console.log(`API app listening at http://64.225.57.235/${port}`);
+app.listen(port, "0.0.0.0", () => {
+  console.log(`API app listening at ${port}`);
 });
