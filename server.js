@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 const budgetModel = require("./models/budget_schema");
 
 let url = "mongodb+srv://mmatin:Osman4599@cluster0.afyz8.mongodb.net/personalBudget?retryWrites=true&w=majority";
@@ -114,5 +114,5 @@ app.delete("/deleteBudget", (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://167.71.187.175/:${port}`);
+  console.log(`Example app listening at ${port}`);
 });
