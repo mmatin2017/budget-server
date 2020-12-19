@@ -19,9 +19,6 @@ async function main(){
    */
   
 
-  let url = "mongodb+srv://mmatin:Osman4599@cluster0.afyz8.mongodb.net/personalBudget?retryWrites=true&w=majority";
-  const client = new MongoClient(url);
-
 
   try {
       // Connect to the MongoDB cluster
@@ -46,6 +43,8 @@ async function listDatabases(client){
   databasesList.databases.forEach(db => console.log(` - ${db.name}`));
 };
 
+
+
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(bodyParser.json());
@@ -54,7 +53,7 @@ app.use(cors());
 app.use("/", express.static("public"));
 
 app.get("/budget", (req, res) => {
-  mongoose
+  client
     .connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
       budgetModel
@@ -62,7 +61,7 @@ app.get("/budget", (req, res) => {
         .then((data) => {
           console.log(data);
           res.json(data);
-          mongoose.connection.close();
+          client.connection.close();
         })
         .catch((connectionError) => {
           console.log(connectionError);
