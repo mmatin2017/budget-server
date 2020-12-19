@@ -114,5 +114,5 @@ app.delete("/deleteBudget", (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+  console.log(`API app listening at http://localhost:${port}`);
 });
