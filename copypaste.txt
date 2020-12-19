@@ -1,0 +1,1 @@
+db.pbudget.update({"_id": "54ae850c-5f3a-448b-978b-3bbc0f988aa5", "data.title": "rdipls"},{ "$set": { "data.$.budget": 2734824298443} } )
