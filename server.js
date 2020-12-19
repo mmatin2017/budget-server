@@ -51,7 +51,11 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.use("/", express.static("public"));
+app.post('/quotes', (req, res) => {
+  console.log('Hellooooooooooooooooo!')
+})
 
+/*
 app.get("/budget", (req, res) => {
   client
     .connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -148,6 +152,8 @@ app.delete("/deleteBudget", (req, res) => {
       console.log(res);
     });
 });
+
+*/
 
 app.listen(port, () => {
   console.log(`API app listening at http://localhost:${port}`);
