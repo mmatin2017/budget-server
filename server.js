@@ -2,12 +2,49 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const {MongoClient} = require('mongodb');
+
 
 const app = express();
 const port = process.env.PORT || 5000;
 const budgetModel = require("./models/budget_schema");
 
 let url = "mongodb+srv://mmatin:Osman4599@cluster0.afyz8.mongodb.net/personalBudget?retryWrites=true&w=majority";
+const client = new MongoClient(url);
+
+async function main(){
+  /**
+   * Connection URI. Update <username>, <password>, and <your-cluster-url> to reflect your cluster.
+   * See https://docs.mongodb.com/ecosystem/drivers/node/ for more details
+   */
+  
+
+  let url = "mongodb+srv://mmatin:Osman4599@cluster0.afyz8.mongodb.net/personalBudget?retryWrites=true&w=majority";
+  const client = new MongoClient(url);
+
+
+  try {
+      // Connect to the MongoDB cluster
+      await client.connect();
+
+      // Make the appropriate DB calls
+      await  listDatabases(client);
+
+  } catch (e) {
+      console.error(e);
+  } finally {
+      await client.close();
+  }
+}
+
+main().catch(console.error);
+
+async function listDatabases(client){
+  databasesList = await client.db().admin().listDatabases();
+
+  console.log("Databases:");
+  databasesList.databases.forEach(db => console.log(` - ${db.name}`));
+};
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
