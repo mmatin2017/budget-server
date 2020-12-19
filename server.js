@@ -63,7 +63,7 @@ app.get("/budget", (req, res) => {
         .then((data) => {
           console.log(data);
           res.json(data);
-          client.connection.close();
+          
         })
         .catch((connectionError) => {
           console.log(connectionError);
@@ -86,7 +86,7 @@ app.post("/addBudget", (req, res) => {
         .insertMany(newBudget)
         .then((data) => {
           res.json(data);
-          mongoose.connection.close();
+        
         })
         .catch((connectionError) => {
           console.log(connectionError);
@@ -113,7 +113,7 @@ app.put("/updateBudget", (req, res) => {
         )
         .then((data) => {
           res.json(data);
-          mongoose.connection.close();
+         
           console.log(res);
         })
         .catch((connectionError) => {
@@ -137,7 +137,7 @@ app.delete("/deleteBudget", (req, res) => {
         .remove({ title: req.body.data.$.title })
         .then((data) => {
           res.json(data);
-          mongoose.connection.close();
+          
           console.log(res);
         })
         .catch((connectionError) => {
