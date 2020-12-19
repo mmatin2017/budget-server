@@ -51,10 +51,16 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.use("/", express.static("public"));
-app.post('/quotes', (req, res) => {
-  console.log('Hellooooooooooooooooo!')
-})
 
+client.connect(url, function (err, budgetModel) {
+  if (err) throw err
+
+  budgetModel
+        .find({})
+
+    console.log(result)
+  })
+})
 /*
 app.get("/budget", (req, res) => {
   client
