@@ -59,7 +59,6 @@ client.connect(url, function (err, budgetModel) {
         .find({})
 
     console.log(result)
-  })
 })
 /*
 app.get("/budget", (req, res) => {
