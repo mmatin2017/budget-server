@@ -1,6 +1,7 @@
-const mongoose = require('mongodb');
+const mongoose = require('mongoose'), 
+Schema = mongoose.Schema;
 
-const budgetSchema = new mongoose.Schema({
+const budgetSchema = new Schema({
     username: {
         type: String,
         unique: true,
