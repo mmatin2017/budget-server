@@ -52,15 +52,8 @@ app.use(cors());
 
 app.use("/", express.static("public"));
 
-client.connect(url, function (err, budgetModel) {
-  if (err) throw err
 
-  budgetModel
-        .find({})
 
-    console.log(result)
-})
-/*
 app.get("/budget", (req, res) => {
   client
     .connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -158,7 +151,7 @@ app.delete("/deleteBudget", (req, res) => {
     });
 });
 
-*/
+
 
 app.listen(port, () => {
   console.log(`API app listening at http://localhost:${port}`);
