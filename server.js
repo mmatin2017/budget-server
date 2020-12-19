@@ -55,15 +55,16 @@ app.use("/", express.static("public"));
 
 
 app.get("/budget", (req, res) => {
-  client
+  mongoose
     .connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
       budgetModel
         .find({})
         .then((data) => {
           console.log(data);
+          console.log("this should work");
           res.json(data);
-          
+          mongoose.connection.close();
         })
         .catch((connectionError) => {
           console.log(connectionError);
@@ -86,7 +87,7 @@ app.post("/addBudget", (req, res) => {
         .insertMany(newBudget)
         .then((data) => {
           res.json(data);
-        
+          mongoose.connection.close();
         })
         .catch((connectionError) => {
           console.log(connectionError);
@@ -113,7 +114,7 @@ app.put("/updateBudget", (req, res) => {
         )
         .then((data) => {
           res.json(data);
-         
+          mongoose.connection.close();
           console.log(res);
         })
         .catch((connectionError) => {
@@ -137,7 +138,7 @@ app.delete("/deleteBudget", (req, res) => {
         .remove({ title: req.body.data.$.title })
         .then((data) => {
           res.json(data);
-          
+          mongoose.connection.close();
           console.log(res);
         })
         .catch((connectionError) => {
@@ -153,6 +154,6 @@ app.delete("/deleteBudget", (req, res) => {
 
 
 
-app.listen(port, () => {
-  console.log(`API app listening at http://localhost:${port}`);
+app.listen(port,"64.225.57.235",() => {
+  console.log(`API app listening at http://64.225.57.235/${port}`);
 });
