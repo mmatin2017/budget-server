@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongodb');
 
 const budgetSchema = new mongoose.Schema({
     username: {
